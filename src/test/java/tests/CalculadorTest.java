@@ -2,6 +2,7 @@ package tests;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import junit.framework.Assert;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
@@ -30,16 +31,17 @@ public class CalculadorTest {
 
 	@Test
 	public void sampleTest() {
-		MobileElement el6 = (MobileElement) driver.findElementById("com.android.calculator2:id/digit_2");
-		el6.click();
-		MobileElement el7 = (MobileElement) driver.findElementByAccessibilityId("plus");
-		el7.click();
-		MobileElement el8 = (MobileElement) driver.findElementById("com.android.calculator2:id/digit_3");
-		el8.click();
-		MobileElement el9 = (MobileElement) driver.findElementByAccessibilityId("equals");
-		el9.click();
+		driver.findElementById("com.android.calculator2:id/digit_2").click();
+		driver.findElementByAccessibilityId("plus").click();
+		driver.findElementById("com.android.calculator2:id/digit_3").click();
+		driver.findElementByAccessibilityId("equals").click();
+
 		MobileElement el10 = (MobileElement) driver.findElementById("com.android.calculator2:id/result");
 		el10.click();
+
+		System.out.println(el10.getText());
+
+		Assert.assertEquals("5", el10.getText());
 	}
 
 	@After
